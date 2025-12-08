@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" href="./assets/me.jpg">
+
+</head>
+<body>
+
+<div id="center">
+  <div id="meContainer">
+    <h1 id="pseudo">OrAxelerator</h1>
+    <img src="./assets/me.jpg" id="me" alt="Picture of me">
+  </div>
+
+  <div id="citationContainer">
+    <h3 id="citation"></h3>
+  </div>
+
+
+
+  <div id="link">
+    <a href="https://www.youtube.com/@OrA-creation" class="item"><i class="fa-brands fa-youtube"></i> YouTube</a>
+    <a href="https://github.com/OrAxelerator" class="item"><i class="fa-brands fa-github"></i> GitHub</a>
+    <a href="https://discord.com" class="item"><i class="fa-brands fa-discord"></i> Discord</a>
+    <a href="https://ton-portfolio.com" class="item"><i class="fa-solid fa-user"></i> Portfolio</a>
+  </div>
+</div>
+
+
+
+<script>
+const me = document.getElementById('me');
+let clickCount = 0;
+
+const citation = [
+    "Se dire que tout a commencez sur Scratch.",
+    "Linux, Macos ou Windows ?",
+    "Life didn't change if you don't commit",
+    "404 - no citation found",
+    "nothing to say."
+]
+const citationElement = document.getElementById("citation");
+
+function displayCitation(lastCitation) {
+
+    let randomNumber = Math.floor(Math.random() * citation.length);
+
+    if (lastCitation === citation[randomNumber]) {
+        randomNumber += 1;
+        randomNumber = randomNumber % citation.length ;
+        console.log(randomNumber);
+    }
+    citationElement.textContent = citation[randomNumber];
+    console.log(citation[randomNumber]);
+}
+displayCitation() // init
+
+const MAX_BRIGHTNESS = 2.45;
+
+me.addEventListener('click', () => {
+  displayCitation(citationElement.textContent)
+  const currentRotation = me.dataset.rotation ? parseInt(me.dataset.rotation) : 0;
+  const newRotation = currentRotation + 360;
+  me.style.transform = `rotateY(${newRotation}deg)`;
+  me.dataset.rotation = newRotation;
+
+
+  clickCount++;
+
+  const factor = Math.min(1 + clickCount * 0.1, MAX_BRIGHTNESS);
+
+  const color1 = `rgb(${Math.min(23*factor,255)}, ${Math.min(23*factor,255)}, ${Math.min(71*factor,255)})`;
+  const color2 = `rgb(${Math.min(35*factor,255)}, ${Math.min(77*factor,255)}, ${Math.min(185*factor,255)})`;
+
+  document.body.style.background = `linear-gradient(360deg, ${color1}, ${color2})`;
+});
+
+</script>
+
+</body>
+</html>

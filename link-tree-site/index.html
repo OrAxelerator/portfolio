@@ -53,10 +53,8 @@ function displayCitation(lastCitation) {
     if (lastCitation === citation[randomNumber]) {
         randomNumber += 1;
         randomNumber = randomNumber % citation.length ;
-        console.log(randomNumber);
     }
     citationElement.textContent = citation[randomNumber];
-    console.log(citation[randomNumber]);
 }
 displayCitation() // init
 

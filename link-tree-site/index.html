@@ -21,13 +21,29 @@
     <h3 id="citation"></h3>
   </div>
 
+  <div class="separator"></div>
+
 
 
   <div id="link">
     <a href="https://www.youtube.com/@OrA-creation" class="item"><i class="fa-brands fa-youtube"></i> YouTube</a>
     <a href="https://github.com/OrAxelerator" class="item"><i class="fa-brands fa-github"></i> GitHub</a>
+    <a href="https://discord.gg/hntayYCdwS" class="item"><i class="fa-brands fa-discord"></i> Discord</a>
+    <a href="https://discord.gg/hntayYCdwS" class="item" id="copyMail"><i class="fa-solid fa-envelope"></i> Copier Mail</a>
     
   </div>
+
+
+  <div id="aboutMe">
+    <h3>Qui suis je ?</h3>  
+    <br>
+    <h5>Juste un nerd qui fait des vidéo youtube et qui code.</h5>
+
+    <br>
+    <h3>Mon porfolio :</h3>
+    <h5>**underconstruction**</h5>
+  </div>
+
 </div>
 
 
@@ -76,6 +92,21 @@ me.addEventListener('click', () => {
 
   document.body.style.background = `linear-gradient(360deg, ${color1}, ${color2})`;
 });
+
+
+const copyBtn = document.getElementById("copyMail");
+
+copyBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  navigator.clipboard.writeText("axel.piat@icloud.com")
+    .then(() => {
+      copyBtn.textContent = "Mail copié !";
+      setTimeout(() => {
+        copyBtn.innerHTML = '<i class="fa-solid fa-envelope"></i> Copier Mail';
+      }, 1500);
+    });
+});
+
 
 </script>
 

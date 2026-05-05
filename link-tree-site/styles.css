@@ -19,7 +19,7 @@ html, body {
   padding: 0;
   overflow-x: hidden;
   height: 100dvh;
-  background: linear-gradient(360deg, #171747, #234db9);
+  background: linear-gradient(360deg, #22228e, #3062e1);
   transition: background 0.5s ease;
   
 }
@@ -148,6 +148,8 @@ h1 {
   }
 
   #citationContainer {
+    padding-bottom: 2em;
+    text-align: center;
     border-radius: 20px 20px 0px 0px;
   }
   #aboutMe {
@@ -230,6 +232,7 @@ h1 {
     align-items: center;
     margin-top: 6em;
     padding: 3em;
+    
     border-radius: 40px;
     border-radius: 10px;
   }
@@ -270,3 +273,25 @@ h1 {
 }
 
 
+@media (min-width: 1204px) {
+
+#link {
+  width: 55em;
+}
+.separator {
+  width: 55em;
+}
+#aboutMe {
+  width: 55em;
+}
+#citationContainer {
+  width: 25em;
+}
+#meContainer {
+  width: 50%;
+  margin: 0 auto
+}
+#center {
+  width: 50%;
+}
+}

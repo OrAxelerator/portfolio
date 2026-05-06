@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+
+        h5 {
+            color: wheat;
+        }
+        #neofetchContainer {
+            background-color: rgb(4, 19, 56);
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+        #neofetch {
+            display: flex;
+            align-items: flex-start;
+        }
+        #me {
+    width: 150px;      /* fixe = plus stable */
+    height: auto;
+    padding: 0;        /* 🔥 enlève le décalage */
+    margin: 0;
+    display: block;
+}
+        #text {
+            font-family: monospace;
+            color: white;
+               margin: 14px 10;       /* réduit l’espace haut/bas */
+    line-height: 1.2; 
+     margin-left: 20px;
+     
+
+        }
+        
+        #text h5 {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-size: 12px; 
+}
+        .blink {
+            color: aliceblue;
+            animation-name: blink;
+            animation-iteration-count: infinite;
+            animation-duration: 1.5s;
+        }
+        @keyframes blink {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+.colors {
+    display: grid;
+    grid-template-columns: repeat(8, 12px);
+    gap: 0; /* important */
+    line-height: 0;
+    margin-top: 20px;
+}
+
+.colors span {
+    width: 12px;
+    height: 12px;
+    display: block;
+}
+
+.colors span:nth-child(1)  { background: #000000; }
+.colors span:nth-child(2)  { background: #ff0000; }
+.colors span:nth-child(3)  { background: #00ff00; }
+.colors span:nth-child(4)  { background: #ffff00; }
+.colors span:nth-child(5)  { background: #0000ff; }
+.colors span:nth-child(6)  { background: #ff00ff; }
+.colors span:nth-child(7)  { background: #00ffff; }
+.colors span:nth-child(8)  { background: #ffffff; }
+
+/* Ligne 2 (versions claires) */
+.colors span:nth-child(9)  { background: #555555; }
+.colors span:nth-child(10) { background: #ff5555; }
+.colors span:nth-child(11) { background: #55ff55; }
+.colors span:nth-child(12) { background: #ffff55; }
+.colors span:nth-child(13) { background: #5555ff; }
+.colors span:nth-child(14) { background: #ff55ff; }
+.colors span:nth-child(15) { background: #55ffff; }
+.colors span:nth-child(16) { background: #eeeeee; }
+    </style>
+    
+<div id="neofetchContainer">
+    <h5>~/portfolio$neofetch</h5>
+    <div id="neofetch">
+        <img src="../link-tree-site/assets/me.jpg" id="me" alt="Picture of me">
+        <div id="text">
+            <h5 id="name">Axel@OrAxelerator</h5>
+            <h5 class="separator"></h5>
+            <h5>Projet : []</h5>
+            <h5>LinkTree</h5>
+            <h5>Competence</h5>
+            <h5>Host: Portfolio v1.0</h5>
+            <h5>OS: Nerd</h5>
+            <h5>Config</h5>
+            <h5>Languages: JS, Python, HTML, CSS</h5>
+            <h5>Location: France</h5>
+            <h5>Uptime: 3 years coding</h5>
+    
+            <div class="colors">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+        </div>
+    </div>
+    <h5>~/portfolio$ <span class="blink">|</span></h5>
+</div>
+
+
+<script>
+    const nameEl  = document.getElementById("name");
+    const separatorsEl = document.querySelectorAll(".separator");
+    const separatorCh = "="
+
+    separatorsEl.forEach(element => {
+        console.log(nameEl.textContent.length);
+        element.textContent = separatorCh.repeat(nameEl.textContent.length)
+        
+    });
+</script>
+
+
+
+</body>
+</html>

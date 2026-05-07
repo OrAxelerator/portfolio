@@ -1,0 +1,143 @@
+
+body {
+    height: 110dvh;
+}
+
+:root {
+    --colors_dimensions:24px;
+    --dot_dimensions:20px
+}
+
+        p {
+            color: wheat;
+        }
+        #neofetchContainer {
+            background-color: rgb(4, 19, 56);
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+        }
+        #neofetch {
+            display: flex;
+            align-items: flex-start;
+        }
+        #me {
+    width: 300px;    
+    height: auto;
+    padding: 0;      
+    margin: 0;
+    display: block;
+}
+        #text {
+            font-family: monospace;
+            color: white;
+            font-size: 42px;
+               margin: 14px 10;       
+    line-height: 1.2; 
+     margin-left: 20px;
+     
+
+        }
+        
+        #text p {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-size: 16px; 
+}
+        .blink {
+            color: aliceblue;
+            animation-name: blink;
+            animation-iteration-count: infinite;
+            animation-duration: 1.5s;
+        }
+        @keyframes blink {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+
+        
+.colors {
+    display: grid;
+    grid-template-columns: repeat(8, var(--colors_dimensions));
+    gap: 0; /* important */
+    line-height: 0;
+    margin-top: 20px;
+}
+
+.colors span {
+    width: var(--colors_dimensions);
+    height: var(--colors_dimensions);
+    display: block;
+}
+
+.colors span:nth-child(1)  { background: #000000; }
+.colors span:nth-child(2)  { background: #ff0000; }
+.colors span:nth-child(3)  { background: #00ff00; }
+.colors span:nth-child(4)  { background: #ffff00; }
+.colors span:nth-child(5)  { background: #0000ff; }
+.colors span:nth-child(6)  { background: #ff00ff; }
+.colors span:nth-child(7)  { background: #00ffff; }
+.colors span:nth-child(8)  { background: #ffffff; }
+
+/* Ligne 2 (versions claires) */
+.colors span:nth-child(9)  { background: #555555; }
+.colors span:nth-child(10) { background: #ff5555; }
+.colors span:nth-child(11) { background: #55ff55; }
+.colors span:nth-child(12) { background: #ffff55; }
+.colors span:nth-child(13) { background: #5555ff; }
+.colors span:nth-child(14) { background: #ff55ff; }
+.colors span:nth-child(15) { background: #55ffff; }
+.colors span:nth-child(16) { background: #eeeeee; }
+
+
+#projectContainer {
+width: 100%;
+height: 50dvh;
+background-color: #65637c;            
+}
+
+.carrousselIndex {
+    width: 100px;
+    height: 20px;
+    position:absolute;
+    bottom: 3%;
+    border-radius: 10px;
+    left: calc(50% - 50px);
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 2px solid black;
+    gap: 5px;
+    
+}
+
+.previewProject {
+    width: 100%;
+    height: 100%;
+}
+
+.dot {
+    width: var(--dot_dimensions);
+    height: var(--dot_dimensions);
+    
+    background-color: rgb(73, 113, 156);
+    
+    border-radius: 100%;
+}
+
+.activeDot {
+        width: var(--dot_dimensions);
+    height: var(--dot_dimensions);
+    background-color: red;
+    border-radius: 100%;
+    
+}

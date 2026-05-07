@@ -1,116 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 
     <style>
-
-        h5 {
-            color: wheat;
-        }
-        #neofetchContainer {
-            background-color: rgb(4, 19, 56);
-            width: 50%;
-            display: flex;
-            flex-direction: column;
-        }
-        #neofetch {
-            display: flex;
-            align-items: flex-start;
-        }
-        #me {
-    width: 150px;      /* fixe = plus stable */
-    height: auto;
-    padding: 0;        /* 🔥 enlève le décalage */
-    margin: 0;
-    display: block;
-}
-        #text {
-            font-family: monospace;
-            color: white;
-               margin: 14px 10;       /* réduit l’espace haut/bas */
-    line-height: 1.2; 
-     margin-left: 20px;
-     
-
-        }
-        
-        #text h5 {
-    margin: 0;
-    padding: 0;
-    line-height: 1;
-    font-size: 12px; 
-}
-        .blink {
-            color: aliceblue;
-            animation-name: blink;
-            animation-iteration-count: infinite;
-            animation-duration: 1.5s;
-        }
-        @keyframes blink {
-            from {
-                opacity: 1;
-            }
-
-            to {
-                opacity: 0;
-            }
-        }
-
-.colors {
-    display: grid;
-    grid-template-columns: repeat(8, 12px);
-    gap: 0; /* important */
-    line-height: 0;
-    margin-top: 20px;
-}
-
-.colors span {
-    width: 12px;
-    height: 12px;
-    display: block;
-}
-
-.colors span:nth-child(1)  { background: #000000; }
-.colors span:nth-child(2)  { background: #ff0000; }
-.colors span:nth-child(3)  { background: #00ff00; }
-.colors span:nth-child(4)  { background: #ffff00; }
-.colors span:nth-child(5)  { background: #0000ff; }
-.colors span:nth-child(6)  { background: #ff00ff; }
-.colors span:nth-child(7)  { background: #00ffff; }
-.colors span:nth-child(8)  { background: #ffffff; }
-
-/* Ligne 2 (versions claires) */
-.colors span:nth-child(9)  { background: #555555; }
-.colors span:nth-child(10) { background: #ff5555; }
-.colors span:nth-child(11) { background: #55ff55; }
-.colors span:nth-child(12) { background: #ffff55; }
-.colors span:nth-child(13) { background: #5555ff; }
-.colors span:nth-child(14) { background: #ff55ff; }
-.colors span:nth-child(15) { background: #55ffff; }
-.colors span:nth-child(16) { background: #eeeeee; }
     </style>
     
 <div id="neofetchContainer">
-    <h5>~/portfolio$neofetch</h5>
+    <p>~/portfolio$ neofetch</p>
     <div id="neofetch">
         <img src="../link-tree-site/assets/me.jpg" id="me" alt="Picture of me">
         <div id="text">
-            <h5 id="name">Axel@OrAxelerator</h5>
-            <h5 class="separator"></h5>
-            <h5>Projet : []</h5>
-            <h5>LinkTree</h5>
-            <h5>Competence</h5>
-            <h5>Host: Portfolio v1.0</h5>
-            <h5>OS: Nerd</h5>
-            <h5>Config</h5>
-            <h5>Languages: JS, Python, HTML, CSS</h5>
-            <h5>Location: France</h5>
-            <h5>Uptime: 3 years coding</h5>
+            <p id="name">Axel@OrAxelerator</p>
+            
+            <p class="separator"></p>
+            <p>Projet : <a href="#projects">/projets</a></p>
+            <p>LinkTree /linktree</p>
+            <p>Host: Portfolio v1.0</p>
+            <p>OS: Nerd</p>
+            <p>Config : /config</p>
+            <p>Languages: JS, Python, HTML, CSS</p>
+            <p>Location: France</p>
+            <p>Uptime: 3 years coding</p>
     
             <div class="colors">
       <span></span><span></span><span></span><span></span>
@@ -121,20 +37,93 @@
     </div>
         </div>
     </div>
-    <h5>~/portfolio$ <span class="blink">|</span></h5>
+    <p>~/portfolio$ <span class="blink">|</span></p>
 </div>
+
+
+<section id="projects">
+<h1>Projets</h1>
+<div id="projectContainer">
+
+    <button id="btnLeft" data-dir="-1">"<"</button>
+    <button id="btnRight" data-dir="1">">"</button>
+    <div class="carrousselIndex">
+
+    </div>
+</div>
+</section>
 
 
 <script>
     const nameEl  = document.getElementById("name");
     const separatorsEl = document.querySelectorAll(".separator");
-    const separatorCh = "="
+    const separatorCh = "=";
+    const carrousselIndex = document.querySelector(".carrousselIndex"); //juste un pour l'instant
+    const btnRight = document.getElementById("btnRight");
+    const btnLeft = document.getElementById("btnLeft");
+    let activeProjectIndex = 0;
+
+//easetser egg terminal udo rm rf / = quitte l'onglet
+document.querySelectorAll("button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const dir = Number(btn.dataset.dir);
+
+    activeProjectIndex = (activeProjectIndex + dir + Projects.length ) % Projects.length;
+
+    console.log(activeProjectIndex);
+    displayDot()
+  });
+});
+
 
     separatorsEl.forEach(element => {
         console.log(nameEl.textContent.length);
         element.textContent = separatorCh.repeat(nameEl.textContent.length)
         
     });
+
+    const Projects = [
+        {
+            "name":"Pixel_Code",
+            "description":"TUI",
+            "img":"/"
+            
+        },
+        {
+            "name":"Trophée NSI",
+            "description":"simulation de fourmi",
+            "img":"/"
+        },
+        {
+            "name":"Guess the flag",
+            "description":"jeu PWA",
+            "img":"/"
+        }
+    ]
+
+    function displayDot() {
+        carrousselIndex.innerHTML = "" //reset ... peut faire mieux
+        for (let i = 0 ; i < Projects.length; i++) {
+            const dot = document.createElement("div");
+            if (i == activeProjectIndex) {
+                dot.classList.add("activeDot")
+            }else {
+                dot.classList.add("dot");
+            }
+            console.log("hop");
+            carrousselIndex.appendChild(dot);
+        }
+
+        Projects.forEach(el => {
+            const Preview = document.createElement("div")
+            Preview.classList.add("previewProject")
+
+        });
+
+    }
+
+        displayDot()
+
 </script>
 
 

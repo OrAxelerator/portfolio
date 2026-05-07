@@ -65,6 +65,22 @@ html, body {margin: 0; }
             }
         }
 
+        #terminalInput {
+            display: inline-block;
+            margin: 0 4px;
+            min-height: 28px;
+            width: auto;
+            max-width: 55%;
+            border-radius: 6px;
+            color: white;
+            font-family: monospace;
+            font-size: 16px;
+            outline: none;
+            white-space: pre;
+        }
+
+    
+
 
         
 .colors {

@@ -22,14 +22,6 @@
             <div id="description">
 
             </div>
-            <!-- <p>Projet : <a href="#projects">/projets</a></p>
-            <p>LinkTree /linktree</p>
-            <p>Host: Portfolio v1.0</p>
-            <p>OS: Nerd</p>
-            <p>Config : /config</p>
-            <p>Languages: JS, Python, HTML, CSS</p>
-            <p>Location: France</p>
-            <p>Uptime: 3 years coding</p> -->
     
             <div class="colors">
       <span></span><span></span><span></span><span></span>
@@ -40,7 +32,7 @@
     </div>
         </div>
     </div>
-    <p>~/portfolio$ <span class="blink">|</span></p>
+    <p>~/portfolio$ <span id="terminalInput" contenteditable="true" spellcheck="false" aria-label="Terminal input"></span></p>
 </div>
 
 
@@ -63,13 +55,14 @@
     const separatorCh = "=";
     const carrouselIndex = document.querySelector(".carrouselIndex"); // juste pour l'instant
     const projectContainer = document.getElementById("projectContainer");
+    const terminalInput = document.getElementById("terminalInput");
     const btnRight = document.getElementById("btnRight");
     const btnLeft = document.getElementById("btnLeft");
     let activeProjectIndex = 0;
     let touchStartX = 0;
     let touchEndX = 0;
 
-
+    terminalInput.focus()
 const neofetchDescription = {
     "Projets" : ": /projets",
     "LinkTree" : ": /linkTree",
@@ -103,7 +96,6 @@ for (const property in neofetchDescription) {
 };
 
 
-// easter egg terminal sudo rm -rf / = quitte l'onglet
 document.querySelectorAll("button").forEach(btn => {
   btn.addEventListener("click", () => {
     const dir = Number(btn.dataset.dir);
@@ -115,6 +107,19 @@ document.querySelectorAll("button").forEach(btn => {
     updateCarrousel();
   });
 });
+
+terminalInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    console.log('ENTER');   
+    console.log(terminalInput.textContent);
+    console.log(terminalInput.textContent == "sudo rm -rf"); 
+    if(terminalInput.textContent == "sudo rm -rf"){
+        alert("French Language uninstall 👌🐧");
+        terminalInput.textContent = "";
+    }
+  }
+});
+
 
 // Touch swipe handling
 projectContainer.addEventListener("touchstart", (e) => {

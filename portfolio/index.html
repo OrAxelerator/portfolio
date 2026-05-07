@@ -12,21 +12,24 @@
     </style>
     
 <div id="neofetchContainer">
-    <p>~/portfolio$ neofetch</p>
+    <p> <span style="color: rgb(0, 255, 0);">❯</span> neofetch</p>
     <div id="neofetch">
-        <img src="../link-tree-site/assets/me.jpg" id="me" alt="Picture of me">
+        <img src="../link-tree-site/assets/me.png" id="me" alt="Picture of me">
         <div id="text">
             <p id="name">Axel@OrAxelerator</p>
             
             <p class="separator"></p>
-            <p>Projet : <a href="#projects">/projets</a></p>
+            <div id="description">
+
+            </div>
+            <!-- <p>Projet : <a href="#projects">/projets</a></p>
             <p>LinkTree /linktree</p>
             <p>Host: Portfolio v1.0</p>
             <p>OS: Nerd</p>
             <p>Config : /config</p>
             <p>Languages: JS, Python, HTML, CSS</p>
             <p>Location: France</p>
-            <p>Uptime: 3 years coding</p>
+            <p>Uptime: 3 years coding</p> -->
     
             <div class="colors">
       <span></span><span></span><span></span><span></span>
@@ -45,9 +48,9 @@
 <h1>Projets</h1>
 <div id="projectContainer">
 
-    <button id="btnLeft" data-dir="-1">"<"</button>
-    <button id="btnRight" data-dir="1">">"</button>
-    <div class="carrousselIndex">
+    <button id="btnLeft" data-dir="-1">&larr;</button>
+    <button id="btnRight" data-dir="1">&rarr;</button>
+    <div class="carrouselIndex">
 
     </div>
 </div>
@@ -58,12 +61,49 @@
     const nameEl  = document.getElementById("name");
     const separatorsEl = document.querySelectorAll(".separator");
     const separatorCh = "=";
-    const carrousselIndex = document.querySelector(".carrousselIndex"); //juste un pour l'instant
+    const carrouselIndex = document.querySelector(".carrouselIndex"); // juste pour l'instant
+    const projectContainer = document.getElementById("projectContainer");
     const btnRight = document.getElementById("btnRight");
     const btnLeft = document.getElementById("btnLeft");
     let activeProjectIndex = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
 
-//easetser egg terminal udo rm rf / = quitte l'onglet
+
+const neofetchDescription = {
+    "Projets" : ": /projets",
+    "LinkTree" : ": /linkTree",
+    "Host":": Portfolio v1.0",
+    "OS":": Nerd",
+    "Config":": /config",
+    "Langages":": [python, html, css, js]",
+    "Location":": France",
+    "Uptime":": 3 ans de code"
+}
+
+// for (let i = 0; i < neofetchDescription.length; i++){
+//     console.log("neofetch : "+ i);
+//     console.log(neofetchDescription[i]);    
+// }
+for (const property in neofetchDescription) {
+    const info = document.createElement("p");
+    const key = document.createElement("span");
+    const value = document.createElement("span");
+
+    key.classList.add("key");
+
+    key.textContent = property
+    value.textContent = neofetchDescription[property]
+
+    info.appendChild(key)
+    info.appendChild(value)
+    
+
+    document.getElementById("description").appendChild(info)
+};
+
+
+// easter egg terminal sudo rm -rf / = quitte l'onglet
 document.querySelectorAll("button").forEach(btn => {
   btn.addEventListener("click", () => {
     const dir = Number(btn.dataset.dir);
@@ -71,9 +111,32 @@ document.querySelectorAll("button").forEach(btn => {
     activeProjectIndex = (activeProjectIndex + dir + Projects.length ) % Projects.length;
 
     console.log(activeProjectIndex);
-    displayDot()
+    displayDot();
+    updateCarrousel();
   });
 });
+
+// Touch swipe handling
+projectContainer.addEventListener("touchstart", (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+}, false);
+
+projectContainer.addEventListener("touchend", (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+}, false);
+
+function handleSwipe() {
+  const swipeThreshold = 50;
+  const diff = touchStartX - touchEndX;
+
+  if (Math.abs(diff) > swipeThreshold) {
+    const dir = diff > 0 ? 1 : -1;
+    activeProjectIndex = (activeProjectIndex + dir + Projects.length) % Projects.length;
+    displayDot();
+    updateCarrousel();
+  }
+}
 
 
     separatorsEl.forEach(element => {
@@ -85,33 +148,53 @@ document.querySelectorAll("button").forEach(btn => {
     const Projects = [
         {
             "name":"Pixel_Code",
-            "description":"TUI",
-            "img":"/"
+            "description":"TUI / gestionnaire de projet en Python",
+            "img":"https://github.com/OrAxelerator/Pixel_Code/raw/main/docs/assets/preview.png",
+            "color":"rgb(109, 150, 234)",
+            "link":"https://github.com/OrAxelerator/Pixel_Code"
             
         },
         {
             "name":"Trophée NSI",
-            "description":"simulation de fourmi",
-            "img":"/"
+            "description":"Simulation de fourmis en Python/Flask en groupe",
+            "img":"https://github.com/OrAxelerator/trophee_nsi_ant/raw/main/favicon.png",
+            "color":"rgb(74, 149, 53)",
+            "link":"https://github.com/OrAxelerator/trophee_nsi_ant"
+        },
+        {
+            "name":"OrA.studio",
+            "description":"Ma chaîne YouTube, ça parle de code/Linux et d'autres trucs cool",
+            "img":"https://github.com/OrAxelerator/portfolio/link-tree-site/assets/yt-channel.png",
+            "color":"red",
+            "link":"https://www.youtube.com/@OrA-creation"
         },
         {
             "name":"Guess the flag",
-            "description":"jeu PWA",
-            "img":"/"
+            "description":"PWA (application web) de quiz sur les drapeaux",
+            "img":"https://github.com/OrAxelerator/web/blob/main/pwa/guess_the_flag/assets/logo_gtf.png?raw=true",
+            "color":"rgb(40, 40, 40)",
+            "link":"https://oraxelerator.github.io/web/pwa/guess_the_flag/"
+        },
+        {
+            "name":"Pixel-Info",
+            "description":"Autre PWA, sorte de mini-site d'actu",
+            "img":"https://github.com/OrAxelerator/web/raw/main/websites/pixel-info/Pixel-info_logo.png?raw=true",
+            "color":"rgb(67, 122, 247)",
+            "link":"https://oraxelerator.github.io/web/websites/pixel-info/index.html"
         }
     ]
 
     function displayDot() {
-        carrousselIndex.innerHTML = "" //reset ... peut faire mieux
+        carrouselIndex.innerHTML = ""; // reset ... peut faire mieux
         for (let i = 0 ; i < Projects.length; i++) {
             const dot = document.createElement("div");
-            if (i == activeProjectIndex) {
-                dot.classList.add("activeDot")
-            }else {
+            if (i === activeProjectIndex) {
+                dot.classList.add("activeDot");
+            } else {
                 dot.classList.add("dot");
             }
             console.log("hop");
-            carrousselIndex.appendChild(dot);
+            carrouselIndex.appendChild(dot);
         }
 
         Projects.forEach(el => {
@@ -122,7 +205,66 @@ document.querySelectorAll("button").forEach(btn => {
 
     }
 
-        displayDot()
+    function createCarrousel() {
+        for (let i =0; i < Projects.length; i++){
+            const card = document.createElement("div");
+            card.classList.add("card", "no-transition");
+            const offset = (i - activeProjectIndex) * 100;
+            card.style.transform = `translateX(${offset}%)`;
+            card.style.backgroundColor = Projects[i].color;
+            const title = document.createElement("h2");
+            title.textContent = Projects[i].name;
+            const description = document.createElement("p");
+            description.textContent = Projects[i].description;
+            const link = document.createElement("a");
+            link.href = Projects[i].link;
+            link.target = "_blank";
+            link.classList.add("projectLink");
+
+            const img = document.createElement("img");
+            img.alt = Projects[i].name;
+            img.classList.add("projectImg");
+            img.src = Projects[i].img;
+
+            link.appendChild(img);
+
+            const imgWrap = document.createElement("div");
+            imgWrap.classList.add("projectImgWrap");
+            imgWrap.appendChild(link);
+
+            card.appendChild(title);
+            card.appendChild(imgWrap);
+            card.appendChild(description);
+    
+            projectContainer.appendChild(card);
+        }
+        // Enable transition after initial positioning
+        requestAnimationFrame(() => {
+            document.querySelectorAll('.card').forEach(card => card.classList.remove('no-transition'));
+        });
+    }
+
+    function updateCarrousel() {
+        const cards = document.querySelectorAll(".card");
+        cards.forEach((card, index) => {
+            const offset = (index - activeProjectIndex) * 100; // 100%
+            card.style.transform = `translateX(${offset}%)`;
+        });
+        playBoinkAnimation();
+    }
+
+    function playBoinkAnimation() {
+        carrouselIndex.classList.remove("animate-boink");
+        void carrouselIndex.offsetWidth; // Force reflow
+        carrouselIndex.classList.add("animate-boink");
+        
+        setTimeout(() => {
+            carrouselIndex.classList.remove("animate-boink");
+        }, 500);
+    }
+
+        displayDot();
+        createCarrousel();
 
 </script>
 

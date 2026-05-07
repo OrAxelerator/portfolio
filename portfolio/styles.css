@@ -1,15 +1,18 @@
 
 body {
     height: 110dvh;
+    touch-action: pan-y;
+    background-color: #000000;
+    color: white;
 }
-
+html, body {margin: 0; }
 :root {
     --colors_dimensions:24px;
     --dot_dimensions:20px
 }
 
         p {
-            color: wheat;
+            color: rgb(252, 252, 252);
         }
         #neofetchContainer {
             background-color: rgb(4, 19, 56);
@@ -98,26 +101,49 @@ body {
 .colors span:nth-child(16) { background: #eeeeee; }
 
 
+#projects {
+    text-align: center;
+}
 #projectContainer {
-width: 100%;
-height: 50dvh;
-background-color: #65637c;            
+    width: 100%;
+    position: relative;
+    height: 50dvh;
+    background-color: #65637c;
+    overflow: hidden;
+    touch-action: manipulation;
 }
 
-.carrousselIndex {
-    width: 100px;
+.carrouselIndex {
+    z-index: 2;
+    width: 150px;
     height: 20px;
-    position:absolute;
+    position: absolute;
     bottom: 3%;
     border-radius: 10px;
-    left: calc(50% - 50px);
-    background-color: white;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    border: 2px solid black;
     gap: 5px;
-    
+    padding: 6px;
+    transform-origin: center;
+}
+@keyframes boink {
+    0% {
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.04);
+        background: rgba(255, 255, 255, 0.268);
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
 }
 
 .previewProject {
@@ -129,15 +155,112 @@ background-color: #65637c;
     width: var(--dot_dimensions);
     height: var(--dot_dimensions);
     
-    background-color: rgb(73, 113, 156);
+    background-color: rgb(198, 221, 246);
     
     border-radius: 100%;
 }
 
+.key {
+    color: yellow;
+}
 .activeDot {
         width: var(--dot_dimensions);
     height: var(--dot_dimensions);
-    background-color: red;
+    background-color: rgb(0, 208, 255);
     border-radius: 100%;
     
+}
+
+.card {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #2e4a7d;
+    padding: 24px;
+    color: white;
+    transition: transform 0.35s ease;
+}
+
+.card h2,
+.card p {
+    width: 100%;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.projectImgWrap {
+    width: 80%;
+    max-width: 424px;
+    margin: 20px auto 0;
+    text-align: center;
+}
+
+.projectLink {
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+}
+
+.projectImg {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+.projectImg:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.card.no-transition {
+    transition: none;
+}
+
+.carrouselIndex.animate-boink {
+    animation: boink 0.5s ease;
+}
+
+a{
+color: rgb(109, 150, 234);
+}
+
+#btnLeft,
+#btnRight {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+#btnLeft {
+    left: 20px;
+}
+
+#btnRight {
+    right: 20px;
+}
+
+#btnLeft:hover,
+#btnRight:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) scale(1.1);
 }

@@ -1,44 +1,51 @@
 const nameEl = document.getElementById("name");
-const separatorsEl = document.querySelectorAll(".separator");
+const separatorEl = document.getElementById("separator");
 const separatorCh = "=";
 const carouselIndex = document.querySelector(".carrouselIndex"); // juste pour l'instant
 const projectContainer = document.getElementById("projectContainer");
 const terminalInput = document.getElementById("terminalInput");
 const descriptionNeofetch = document.getElementById("description");
+const neofetchEl = document.getElementById("neofetch");
+const meImgEl = document.getElementById("me");
 let activeProjectIndex = 0;
 let touchStartX = 0;
 let touchEndX = 0;
 
 terminalInput.focus()
 const neofetchDescription = {
-    "Projets": ": /projets",
-    "LinkTree": ": /linkTree",
-    "Host": ": Portfolio v1.0",
-    "OS": ": Nerd",
-    "Config": ": /config",
-    "Langages": ": [python, html, css, js]",
-    "Location": ": France",
-    "Uptime": ": 3 ans de code"
+    "Status:":"Lycéen",
+    "Level:":"Apprentissage",
+    "Langages:": "Python / HTML / JS / CSS",
+    "Uptime:": "3 ans de code",
+    "Projets:": "/projets",
+    "LinkTree:": "/linkTree",
+    "Location:": "France",
+    "Contact:":"axel.piat@icloud.com"
 }
 
 
-for (const property in neofetchDescription) {
-    const info = document.createElement("p");
-    const key = document.createElement("span");
-    const value = document.createElement("span");
+function displayNeofetch() {
+    meImgEl.src = "../assets/me.png"
 
-    key.classList.add("key");
+    for (const property in neofetchDescription) {
+        const info = document.createElement("p");
+        const key = document.createElement("span");
+        const value = document.createElement("span");
 
-    key.textContent = property
-    value.textContent = neofetchDescription[property]
+        key.classList.add("key");
 
-    info.appendChild(key)
-    info.appendChild(value)
+        key.textContent = property
+        value.textContent = " " + neofetchDescription[property]
+
+        info.appendChild(key)
+        info.appendChild(value)
 
 
-    descriptionNeofetch.appendChild(info)
-};
+        descriptionNeofetch.appendChild(info)
+    };
+}
 
+displayNeofetch();
 
 document.querySelectorAll("button").forEach(btn => {
   btn.addEventListener("click", () => {
@@ -52,17 +59,53 @@ document.querySelectorAll("button").forEach(btn => {
   });
 });
 
+
+
+
+
+const commandLinux = {
+    "sudo rm -rf":"French Language uninstall 👌🐧",
+    "ls":"portfolio link-tree",
+    "cd linktree":() => open("https://oraxelerator.github.io/portfolio/link-tree/index.html", "_self"),
+    "cd yt":() => open("https://www.youtube.com/@OrA-creation"),
+    "neofetch":() => {
+        neofetchEl.classList.add("hideNeofetch");
+        descriptionNeofetch.innerHTML = "";
+        setTimeout(() => {
+            displayNeofetch();
+            neofetchEl.classList.remove("hideNeofetch");
+        }, 800);
+    }
+
+}
+
+
 terminalInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
+    e.preventDefault();
     console.log('ENTER');
     console.log(terminalInput.textContent);
     console.log(terminalInput.textContent == "sudo rm -rf");
-    if(terminalInput.textContent == "sudo rm -rf"){
-        alert("French Language uninstall 👌🐧");
-        terminalInput.textContent = "";
+    for (const property in commandLinux){
+        if (terminalInput.textContent == property){
+            if(typeof commandLinux[property] == "string" ){
+                alert(commandLinux[property])
+            }
+            else {
+                commandLinux[property]()
+            }
+        }
     }
+    terminalInput.innerHTML = "";
   }
 });
+
+
+const neofetchContainer = document.getElementById("neofetchContainer");
+
+neofetchContainer.addEventListener("click", () => {
+    terminalInput.focus();
+})
 
 
 // Touch swipe handling
@@ -88,11 +131,8 @@ function handleSwipe() {
 }
 
 
-separatorsEl.forEach(element => {
-    console.log(nameEl.textContent.length);
-    element.textContent = separatorCh.repeat(nameEl.textContent.length)
+separatorEl.textContent = separatorCh.repeat(nameEl.textContent.length)
 
-});
 
 const projects = [
     {

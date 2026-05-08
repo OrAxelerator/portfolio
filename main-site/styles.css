@@ -24,6 +24,14 @@ html, body {margin: 0; }
         #neofetch {
             display: flex;
             align-items: flex-start;
+            position: relative;
+        }
+
+        #neofetch.hideNeofetch::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgb(4, 19, 56);
         }
         #me {
     width: 300px;    
@@ -67,16 +75,17 @@ html, body {margin: 0; }
 
         #terminalInput {
             display: inline-block;
+            white-space: nowrap;
+            min-width: 1ch;
             margin: 0 4px;
             min-height: 28px;
-            width: auto;
+            width: 100%;
             max-width: 55%;
             border-radius: 6px;
             color: white;
             font-family: monospace;
             font-size: 16px;
             outline: none;
-            white-space: pre;
         }
 
     

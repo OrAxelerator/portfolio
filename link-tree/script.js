@@ -1,54 +1,3 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LinkTree</title>
-    <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="icon" href="./assets/me.png">
-
-</head>
-<body>
-
-<div id="center">
-  <div id="meContainer">
-    <h1 id="pseudo">OrAxelerator</h1>
-    <img src="./assets/me.png" id="me" alt="Picture of me">
-  </div>
-
-  <div id="citationContainer">
-    <h3 id="citation"></h3>
-  </div>
-
-  <div class="separator"></div>
-
-
-
-  <div id="link">
-    <a href="https://www.youtube.com/@OrA-creation" class="item"><i class="fa-brands fa-youtube"></i> YouTube</a>
-    <a href="https://github.com/OrAxelerator" class="item"><i class="fa-brands fa-github"></i> GitHub</a>
-    <a href="https://discord.gg/hntayYCdwS" class="item"><i class="fa-brands fa-discord"></i> Discord</a>
-    <a href="https://discord.gg/hntayYCdwS" class="item" id="copyMail"><i class="fa-solid fa-envelope"></i> Copier Mail</a>
-    
-  </div>
-
-
-  <div id="aboutMe">
-    <h3>Qui suis je ?</h3>  
-    <br>
-    <h5>Juste un nerd qui fait des vidéo youtube et qui code.</h5>
-
-    <br>
-    <h3>Mon porfolio :</h3>
-    <h5>**underconstruction**</h5>
-  </div>
-
-</div>
-
-
-
-<script>
 const me = document.getElementById('me');
 let clickCount = 0;
 
@@ -74,14 +23,14 @@ function displayCitation(lastCitation) {
     }
     citationElement.textContent = citation[randomNumber];
 }
-displayCitation() 
-const MAX_STEP = 0.6; 
+displayCitation()
+const MAX_STEP = 0.6;
 
 const base1 = [34, 34, 142];
 const base2 = [48, 98, 225];
 
 const mix = (base, factor) => {
-  const target = base.map(v => v * 1.25); 
+  const target = base.map(v => v * 1.25);
   return base.map((v, i) =>
     Math.round(v + (target[i] - v) * factor)
   );
@@ -98,7 +47,7 @@ me.addEventListener('click', () => {
 
   clickCount++;
 
-  const factor = Math.min(clickCount * 0.08, MAX_STEP); 
+  const factor = Math.min(clickCount * 0.08, MAX_STEP);
 
   const [r1, g1, b1] = mix(base1, factor);
   const [r2, g2, b2] = mix(base2, factor);
@@ -120,9 +69,3 @@ copyBtn.addEventListener("click", (e) => {
       }, 1500);
     });
 });
-
-
-</script>
-
-</body>
-</html>

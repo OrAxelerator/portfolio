@@ -27,6 +27,7 @@ export const projects: Project[] = [
   {
     slug: 'enchant',
     name: 'Enchant',
+    description: 'Site pour aprendre le Standar Galactic Alphabet (SGA)',
     img: enchant,
     color: 'rgb(150, 90, 230)',
     link: 'https://github.com/OrAxelerator/enchant',
@@ -35,6 +36,7 @@ export const projects: Project[] = [
   {
     slug: 'tda',
     name: 'TDA',
+    description: 'Jeu de carte en ligne',
     img: tda,
     color: 'rgb(49, 120, 198)',
     link: 'https://github.com/OrAxelerator/tda',
@@ -43,6 +45,7 @@ export const projects: Project[] = [
   {
     slug: 'pixel-snake-tui',
     name: 'Pixel_Snake_TUI',
+    description: 'Tui pou jouer a snake',
     img: pixelSnakeTui,
     color: 'rgb(74, 180, 90)',
     link: 'https://github.com/OrAxelerator/pixel-snake-tui',
@@ -51,6 +54,7 @@ export const projects: Project[] = [
   {
     slug: 'notetube',
     name: 'NoteTube',
+    description: 'Extension chrome/firefox pour pouvoir prendre des notes sur des vidéos',
     img: noteTube,
     color: 'rgb(200, 30, 30)',
     link: 'https://github.com/OrAxelerator/NoteTube',
@@ -59,6 +63,7 @@ export const projects: Project[] = [
   {
     slug: 'thumbswap',
     name: 'ThumbSwap',
+    description: 'Extension pour testez ces miniatures sur votre page yt',
     img: thumbSwap,
     color: 'rgb(230, 160, 40)',
     link: 'https://github.com/OrAxelerator/thumbSwap',
@@ -76,7 +81,7 @@ export const projects: Project[] = [
   {
     slug: 'trophee-nsi',
     name: 'Trophée NSI',
-    description: 'Simulation de fourmis en Python/Flask en groupe',
+    description: 'Simulation de fourmis en Python/Flask',
     img: antImg,
     color: 'rgb(74, 149, 53)',
     link: 'https://github.com/OrAxelerator/trophee_nsi_ant',

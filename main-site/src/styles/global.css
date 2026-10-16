@@ -1,0 +1,128 @@
+@font-face {
+  font-family: 'VCR OSD Mono';
+  src: url('../../../assets/fonts/VCR/VCR_OSD_MONO_1.001.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: '0xProto Nerd Font';
+  src: url('../../../assets/fonts/0xProto/0xProtoNerdFont-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+:root {
+  /* Fond — base #0C0F0A */
+  --bg-950: #060805;
+  --bg-900: #0c0f0a;
+  --bg-800: #131810;
+  --bg-700: #1b2217;
+  --bg-600: #262f20;
+  --bg-500: #3a4632;
+  --bg-400: #55634b;
+
+  /* Accent — base #71CDF5 */
+  --accent-200: #d2f0fc;
+  --accent-300: #a3e0fa;
+  --accent-400: #71cdf5;
+  --accent-500: #45b8ec;
+  --accent-600: #2596cc;
+  --accent-700: #1b7099;
+  --accent-800: #134d69;
+  --accent-900: #0d3245;
+  --accent-950: #0a1c24;
+  --accent-glow: rgb(113 205 245 / 0.22);
+
+  /* Texte — base #EFF3F4 */
+  --text-100: #eff3f4;
+  --text-300: #b8c3c6;
+  --text-400: #849194;
+  --text-500: #5b6669;
+
+  --danger: #f58a7a;
+
+  --font-display: 'VCR OSD Mono', ui-monospace, monospace;
+  --font-mono: '0xProto Nerd Font', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --radius: 4px;
+  --maxw: 1100px;
+  --gutter: clamp(1rem, 4vw, 2rem);
+
+  --windows-btn-1: rgb(255	92	96);
+  --windows-btn-2: rgb(250, 200,0);
+  --windows-btn-3: rgb(52, 199, 89);
+
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: var(--font-mono);
+  line-height: 1.55;
+  color: var(--text-100);
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, var(--accent-950), transparent),
+    var(--bg-900);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Léger effet de scanlines CRT, en écho à la police VCR. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgb(0 0 0 / 0.12) 0 1px, transparent 1px 3px);
+  z-index: 100;
+}
+
+::selection {
+  color: var(--bg-900);
+  background: var(--accent-400);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-400);
+  outline-offset: 2px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3.5rem, 8vw, 6rem);
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(1.5rem, 5vw, 3rem) var(--gutter) 4rem;
+}
+
+.footer {
+  padding: 2rem var(--gutter);
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-500);
+  border-top: 1px solid var(--bg-700);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

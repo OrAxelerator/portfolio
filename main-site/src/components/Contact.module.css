@@ -1,0 +1,41 @@
+.section {
+  scroll-margin-top: 5rem;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75ch;
+  padding: 0.7rem 1.1rem;
+  font: inherit;
+  color: var(--text-100);
+  text-decoration: none;
+  background: var(--bg-800);
+  border: 1px solid var(--bg-600);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 150ms, color 150ms, transform 150ms;
+}
+
+.link:hover {
+  color: var(--accent-300);
+  border-color: var(--accent-400);
+  transform: translateY(-2px);
+}
+
+.primary {
+  color: var(--bg-900);
+  background: var(--accent-400);
+  border-color: var(--accent-400);
+}
+
+.primary:hover {
+  color: var(--bg-900);
+  background: var(--accent-300);
+}

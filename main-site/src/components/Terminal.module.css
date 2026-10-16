@@ -1,0 +1,107 @@
+.window {
+  background: var(--bg-800);
+  border: 1px solid var(--bg-600);
+  border-radius: var(--radius);
+  box-shadow: 0 0 0 1px var(--bg-950), 0 24px 60px -20px var(--accent-glow);
+  overflow: hidden;
+  cursor: text;
+}
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.55rem 0.9rem;
+  background: var(--bg-700);
+  border-bottom: 1px solid var(--bg-600);
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dots i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--bg-500);
+}
+
+.dots i:first-child {
+  background: var(--windows-btn-1);
+}
+.dots i:nth-child(2) {
+  background: var(--windows-btn-2);
+}
+.dots i:last-child {
+  background: var(--windows-btn-3);
+}
+
+.titleText {
+  font-size: 0.8rem;
+  color: var(--text-400);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.body {
+  padding: 1.25rem;
+  font-size: 0.95rem;
+}
+
+.line {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.hint {
+  margin: 1rem 0 0.5rem;
+}
+
+.prompt {
+  color: var(--accent-400);
+  font-weight: 700;
+}
+
+.default {
+  color: var(--text-100);
+}
+
+.muted,
+.hint {
+  color: var(--text-400);
+}
+
+.accent {
+  color: var(--accent-300);
+}
+
+.error {
+  color: var(--danger);
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: 1ch;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.15rem 0;
+  font: inherit;
+  color: var(--text-100);
+  background: transparent;
+  border: none;
+  outline: none;
+  caret-color: var(--accent-400);
+  caret-shape: block;
+}
+
+.input:focus-visible {
+  outline: none;
+}

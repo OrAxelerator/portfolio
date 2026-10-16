@@ -61,7 +61,7 @@ const copyBtn = document.getElementById("copyMail");
 
 copyBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  navigator.clipboard.writeText("axel.piat@icloud.com")
+  navigator.clipboard.writeText("oraxelerator.dev@gmail.com")
     .then(() => {
       copyBtn.textContent = "Mail copié !";
       setTimeout(() => {

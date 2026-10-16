@@ -1,0 +1,55 @@
+.section {
+  scroll-margin-top: 5rem;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5ch;
+  padding: 0.35rem 0.75rem;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--text-300);
+  background: var(--bg-800);
+  border: 1px solid var(--bg-600);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: color 150ms, border-color 150ms, background 150ms;
+}
+
+.chip:hover {
+  color: var(--text-100);
+  border-color: var(--bg-500);
+}
+
+.chip[aria-pressed='true'] {
+  color: var(--bg-900);
+  background: var(--accent-400);
+  border-color: var(--accent-400);
+}
+
+.count {
+  margin: 1rem 0 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-400);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.grid > li {
+  display: flex;
+  min-width: 0;
+}

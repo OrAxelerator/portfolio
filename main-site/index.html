@@ -1,57 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="./styles.css">
-</head>
-<body>
-
-    <style>
-    </style>
-    
-<div id="neofetchContainer">
-    <p> <span style="color: rgb(0, 255, 0);">❯</span> neofetch</p>
-    <div id="neofetch">
-        <img  id="me" alt="Picture of me">
-        <div id="text">
-            <p id="name">Axel@OrAxelerator</p>
-            
-            <p id="separator"></p>
-            <div id="description">
-
-            </div>
-    
-            <div class="colors">
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
-    
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
-    </div>
-        </div>
-    </div>
-    <p>~/portfolio$ <span id="terminalInput" contenteditable="true" spellcheck="false" aria-label="Terminal input"></span></p>
-</div>
-
-
-<section id="projects">
-<h1>Projets</h1>
-<div id="projectContainer">
-
-    <button id="btnLeft" data-dir="-1">&larr;</button>
-    <button id="btnRight" data-dir="1">&rarr;</button>
-    <div class="carrouselIndex">
-
-    </div>
-</div>
-</section>
-
-
-<script src="./script.js"></script>
-
-
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio d'OrAxelerator — projets, code et vidéos." />
+    <meta name="theme-color" content="#0C0F0A" />
+    <title>OrAxelerator — Portfolio</title>
+    <link rel="icon" href="../assets/me.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

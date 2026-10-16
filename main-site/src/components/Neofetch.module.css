@@ -1,0 +1,76 @@
+.neofetch {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.avatar {
+  width: clamp(110px, 22vw, 220px);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 1px solid var(--bg-500);
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+
+.info {
+  min-width: 0;
+}
+
+.title,
+.separator {
+  margin: 0;
+  font-weight: 700;
+}
+
+.accent {
+  color: var(--accent-400);
+}
+
+.separator {
+  color: var(--text-500);
+  overflow: hidden;
+}
+
+.list {
+  margin: 0.25rem 0 0;
+}
+
+.row {
+  display: flex;
+  gap: 0.6ch;
+  animation: line-in 300ms ease-out both;
+}
+
+.row dt {
+  color: var(--accent-400);
+  font-weight: 700;
+}
+
+.row dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.colors {
+  display: grid;
+  grid-template-columns: repeat(8, 1.4rem);
+  margin-top: 1rem;
+}
+
+.colors span {
+  height: 1.4rem;
+}
+
+@keyframes line-in {
+  from {
+    opacity: 0;
+    transform: translateX(-6px);
+  }
+}
+
+@media (max-width: 560px) {
+  .neofetch {
+    flex-direction: column;
+  }
+}

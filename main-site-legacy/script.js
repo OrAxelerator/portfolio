@@ -140,7 +140,8 @@ const projects = [
         "description":"TUI / gestionnaire de projet en Python",
         "img":"https://github.com/OrAxelerator/Pixel_Code/raw/main/docs/assets/preview.png",
         "color":"rgb(109, 150, 234)",
-        "link":"https://github.com/OrAxelerator/Pixel_Code"
+        "link":"https://github.com/OrAxelerator/Pixel_Code",
+        "stack":["python", "terminal"]
 
     },
     {
@@ -148,28 +149,32 @@ const projects = [
         "description":"Simulation de fourmis en Python/Flask en groupe",
         "img":"https://github.com/OrAxelerator/trophee_nsi_ant/raw/main/favicon.png",
         "color":"rgb(74, 149, 53)",
-        "link":"https://github.com/OrAxelerator/trophee_nsi_ant"
+        "link":"https://github.com/OrAxelerator/trophee_nsi_ant",
+        "stack":["python", "html5", "css3", "js"]
     },
     {
         "name":"OrA.studio",
         "description":"Ma chaîne YouTube, ça parle de code/Linux et d'autres trucs cool",
         "img":"../assets/yt-channel.png",
         "color":"red",
-        "link":"https://www.youtube.com/@OrA-creation"
+        "link":"https://www.youtube.com/@OrA-creation",
+        "stack":[]
     },
     {
         "name":"Guess the flag",
         "description":"PWA (application web) de quiz sur les drapeaux",
         "img":"https://github.com/OrAxelerator/web/blob/main/pwa/guess_the_flag/assets/logo_gtf.png?raw=true",
         "color":"rgb(40, 40, 40)",
-        "link":"https://oraxelerator.github.io/web/pwa/guess_the_flag/"
+        "link":"https://oraxelerator.github.io/web/pwa/guess_the_flag/",
+        "stack":["js", "html5", "css3"]
     },
     {
         "name":"Pixel-Info",
         "description":"Autre PWA, sorte de mini-site d'actu",
         "img":"https://github.com/OrAxelerator/web/raw/main/websites/pixel-info/Pixel-info_logo.png?raw=true",
         "color":"rgb(67, 122, 247)",
-        "link":"https://oraxelerator.github.io/web/websites/pixel-info/index.html"
+        "link":"https://oraxelerator.github.io/web/websites/pixel-info/index.html",
+        "stack":["js", "html5", "css3"]
     }
 ]
 
@@ -186,43 +191,111 @@ function renderDots() {
         carouselIndex.appendChild(dot);
     }
 }
-
 function createCarousel() {
-    for (let i =0; i < projects.length; i++){
+
+    // on supprime seulement les anciennes cards
+    const oldCards = projectContainer.querySelectorAll(".card");
+    oldCards.forEach(card => card.remove());
+
+    for (let i = 0; i < projects.length; i++) {
+
+        // ===== CARD =====
+
         const card = document.createElement("div");
         card.classList.add("card", "no-transition");
+
         const offset = (i - activeProjectIndex) * 100;
         card.style.transform = `translateX(${offset}%)`;
-        card.style.backgroundColor = projects[i].color;
+
+        // ===== CONTENT =====
+
+        const content = document.createElement("div");
+        content.classList.add("cardContent");
+
+        // ===== LEFT SIDE =====
+
+        const infos = document.createElement("div");
+        infos.classList.add("projectInfos");
+
         const title = document.createElement("h2");
         title.textContent = projects[i].name;
+
         const description = document.createElement("p");
         description.textContent = projects[i].description;
+
+        const stack = document.createElement("div");
+        stack.classList.add("stack");
+
+        const texte = document.createElement("p");
+        texte.textContent = "Stack : ";
+        stack.appendChild(texte)
+        projects[i].stack.forEach(element => {
+            const el = document.createElement("i");
+
+            if(element === "flask"){
+                console.log("fsjdles");
+                el.classList.add("fa-solid");
+                el.classList.add("fa-vial");
+            } if(element === "terminal"){
+                el.classList.add("fa-solid");
+                el.classList.add("fa-terminal");
+            }else {
+                el.classList.add("fa-brands");
+            }
+
+            el.classList.add(`fa-${element}`);
+            el.title = element
+            stack.appendChild(el);
+        });
+
+
+        const button = document.createElement("a");
+        button.href = projects[i].link;
+        button.target = "_blank";
+        button.classList.add("projectButton");
+        button.textContent = "Voir plus";
+        
+
+        infos.appendChild(title);
+        infos.appendChild(description);
+        infos.appendChild(stack);
+
+        infos.appendChild(button);
+
+        // ===== IMAGE =====
+
+        const imgWrap = document.createElement("div");
+        imgWrap.classList.add("projectImgWrap");
+
         const link = document.createElement("a");
         link.href = projects[i].link;
         link.target = "_blank";
         link.classList.add("projectLink");
 
         const img = document.createElement("img");
+        img.src = projects[i].img;
         img.alt = projects[i].name;
         img.classList.add("projectImg");
-        img.src = projects[i].img;
 
         link.appendChild(img);
-
-        const imgWrap = document.createElement("div");
-        imgWrap.classList.add("projectImgWrap");
         imgWrap.appendChild(link);
 
-        card.appendChild(title);
-        card.appendChild(imgWrap);
-        card.appendChild(description);
+        // ===== STRUCTURE =====
+
+        content.appendChild(infos);
+        content.appendChild(imgWrap);
+        
+
+
+        card.appendChild(content);
 
         projectContainer.appendChild(card);
     }
-    // Enable transition after initial positioning
+
     requestAnimationFrame(() => {
-        document.querySelectorAll('.card').forEach(card => card.classList.remove('no-transition'));
+        document
+            .querySelectorAll(".card")
+            .forEach(card => card.classList.remove("no-transition"));
     });
 }
 

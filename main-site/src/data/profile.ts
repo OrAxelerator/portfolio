@@ -6,7 +6,7 @@ export const profile = {
 
 export const links = {
   github: 'https://github.com/OrAxelerator',
-  youtube: 'https://www.youtube.com/@OrA-creation',
+  youtube: 'https://www.youtube.com/@OrAxelerator-dev',
   discord: 'https://discord.gg/hntayYCdwS',
   linktree: 'https://oraxelerator.github.io/portfolio/link-tree/index.html',
 };
